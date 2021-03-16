@@ -17,7 +17,7 @@
       </thead>
       <tbody>
         <!-- | filter: phrase: 'name' | sort: columnKey:direction -->
-        <tr *ngFor="let user of users$ | async">
+        <tr *ngFor="let user of users$ | async| filter: phrase: 'name'| sort: columnKey:direction">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>

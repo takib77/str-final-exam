@@ -10,7 +10,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class UserListComponent implements OnInit {
 
-  users$: Observable<User[]> = this.userService.getAll();
+  users$: Observable<User[]> = this.userService.userList$;
   phrase: string = '';
   direction: number = 1;
   columnKey: string = '';
@@ -20,13 +20,15 @@ export class UserListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.userService.getAll();
+    this.users$.subscribe();
   }
 
   onDelete(user: User): void {
     alert('Are you sure you want to delete?');
     this.userService.delUser(user).subscribe(
       () => {
-        this.users$ = this.userService.getAll();
+        this.userService.getAll();
       }
     );
   }
