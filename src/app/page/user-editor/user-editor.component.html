@@ -15,8 +15,7 @@
         <label>Email</label>
         <!-- Validation: valid email, required.
           Help: https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript -->
-        <input class="form-control" type="text" name="email" [(ngModel)]="user.email"
-          pattern="^.{3,}@{1}.{3,}\.{1}[a-z]{2,}$" required>
+        <input class="form-control" type="text" name="email" [(ngModel)]="user.email" [pattern]="emailPattern" required>
         <div [hidden]="userForm.controls.email?.valid || userForm.controls.email.pristine" class="error-message">
           Valid email
         </div>
