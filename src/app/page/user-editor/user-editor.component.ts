@@ -39,12 +39,19 @@ export class UserEditorComponent implements OnInit {
   }
 
   onSubmit(form: NgForm, user: User): void {
-    if (user.id === 0) {
-      this.userService.createUser(user).subscribe(() => { });
-      this.router.navigate([''])
-    } else {
-      this.userService.updateUser(user).subscribe(() => { });
-      this.router.navigate(['']);
+    try {
+      if (user.id == 0) {
+        this.userService.createUser(user).subscribe(
+          () => this.router.navigate(['/'])
+        );
+      }
+      else {
+        this.userService.updateUser(user).subscribe(
+          () => this.router.navigate(['/'])
+        );
+      }
+    } catch (error) {
+      // Error message
     }
   }
 
